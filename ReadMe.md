@@ -16,9 +16,9 @@ Next we recognize the category for each candidate window using convolutional neu
 ###Detection
 One significant feature of the speed-limit signs is that they all contain red circles and numbers. So the first version of our detection algorithm is to find the red circles in the image.
 To do this, we binarize the image using a color filter. We manually set the threshold in HSV space. Then we find the regions which contain at least 2 hierarchical contour levels.
-The function cv::findContours in the OpenCV library can directed do such work for us.
+The function cv::findContours in the OpenCV library can directly do such work for us.
 
-After finish this, most speed-limit signs can be found except for those which are occluded by other objects and contain no whole circle. 
+After finishing this, most speed-limit signs can be found except for those which are occluded by other objects and contain no whole circle. 
 To tackle this defect, we resort to the cascade classifier which concatenates several weak classifer using boost techniques.
 Cascade classifier works quite well in tasks such as face detection.
 We use the color and shape filter to find some (around 800) true patches of speed-limit sign in the training image set(3000+ panorama images shot in Beijing).
